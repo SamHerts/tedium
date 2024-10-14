@@ -45,10 +45,13 @@ target_include_directories(nanojsonc_lib PUBLIC ${nanojsonc_SOURCE_DIR}/include)
 # Combine third party libraries for easier access
 set(NEEDED_LIBS inih_lib tinyexpr_lib nanojsonc_lib)
 
+add_library(libconfigurator STATIC ${configurator_sources})
+target_link_libraries(libconfigurator PRIVATE ${NEEDED_LIBS})
+
 # Configurator_cpp target
-add_executable(Configurator_cpp ${configurator_sources} testpp.cpp)
-target_link_libraries(Configurator_cpp PRIVATE ${NEEDED_LIBS})
+add_executable(Configurator_cpp testpp.cpp)
+target_link_libraries(Configurator_cpp PRIVATE  libconfigurator ${NEEDED_LIBS})
 
 # Configurator_c target
 add_executable(Configurator_c ${configurator_sources} test.c)
-target_link_libraries(Configurator_c PRIVATE ${NEEDED_LIBS} m)
+target_link_libraries(Configurator_c PRIVATE libconfigurator ${NEEDED_LIBS} m)
