@@ -6,7 +6,7 @@
 #include <cstring>
 #include <cstdio>
 
-#include <configurator.h>
+#include "configurator.h"
 
 int main(int argc, char* argv[])
 {
