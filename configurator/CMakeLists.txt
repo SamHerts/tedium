@@ -50,8 +50,10 @@ target_link_libraries(libconfigurator PRIVATE ${NEEDED_LIBS})
 
 # Configurator_cpp target
 add_executable(Configurator_cpp testpp.cpp)
+target_include_directories(Configurator_cpp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(Configurator_cpp PRIVATE  libconfigurator ${NEEDED_LIBS})
 
 # Configurator_c target
 add_executable(Configurator_c ${configurator_sources} test.c)
+target_include_directories(Configurator_c PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(Configurator_c PRIVATE libconfigurator ${NEEDED_LIBS} m)
